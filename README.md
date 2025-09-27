@@ -57,39 +57,66 @@ http://localhost:8000
 
 ## **📚 API Usage Examples**
 
-### Sample API Interactions:
+### 🎵 **Interactive API Documentation**
 
-<center>Add Track Request</center>
+![API Documentation](Screenshot%202025-09-27%20152650.png)
+*Interactive Swagger UI showing all available endpoints*
 
-![img.png](img.png)
+### 🎤 **Adding a Track**
 
-<center>Add Track Response</center>
+![Add Track Example](Screenshot%202025-09-27%20152841.png)
+*Adding a new track with automatic metadata enrichment*
 
-![img_1.png](img_1.png)
+### 🔍 **Search Functionality**
 
-<center>Search Request</center>
+![Search Example](Screenshot%202025-09-27%20153021.png)
+*Searching tracks by keywords, artist, or title*
 
-![img_2.png](img_2.png)
+### 💻 **Command Line Examples**
 
-<center>Search Response</center>
+**Add a track:**
+```bash
+curl -X POST "http://localhost:8000/" \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Bohemian Rhapsody", "artist": "Queen"}'
+```
 
-![img_3.png](img_3.png)
+**Search tracks:**
+```bash
+curl -X POST "http://localhost:8000/search" \
+  -H "Content-Type: application/json" \
+  -d '{"search_terms": ["Queen", "rock"]}'
+```
 
-<center>Get Track Request</center>
+**Get track with lyrics:**
+```bash
+curl -X GET "http://localhost:8000/{track_id}?page=1&size=10"
+```
 
-![img_5.png](img_5.png)
+### 📊 **Sample API Responses**
 
-<center>Get Track Response</center>
+**Track Addition Response:**
+```json
+{
+  "id": "68d7a5fdf0b2905748e5b199",
+  "title": "Thunderstruck",
+  "artist": "AC/DC", 
+  "release_date": "1990-09-24",
+  "external_link": "https://genius.com/AC-DC-thunderstruck-lyrics"
+}
+```
 
-![img_6.png](img_6.png)
-
-<center>Update Request</center>
-
-![img_4.png](img_4.png)
-
-<center>Update Response</center>
-
-![img_7.png](img_7.png)
+**Search Response:**
+```json
+[
+  {
+    "id": "68d7a48ef0b2905748e5b182",
+    "title": "Hotel California",
+    "artist": "Eagles",
+    "release_date": "1976-12-08"
+  }
+]
+```
 
 ## **📖 API Documentation**
 
