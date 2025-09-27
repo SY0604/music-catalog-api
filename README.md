@@ -60,17 +60,11 @@ http://localhost:8000
 ### 🎵 **Interactive API Documentation**
 
 ![API Documentation](Screenshot%202025-09-27%20152650.png)
-*Interactive Swagger UI showing all available endpoints*
-
-### 🎤 **Adding a Track**
 
 ![Add Track Example](Screenshot%202025-09-27%20152841.png)
-*Adding a new track with automatic metadata enrichment*
 
-### 🔍 **Search Functionality**
 
 ![Search Example](Screenshot%202025-09-27%20153021.png)
-*Searching tracks by keywords, artist, or title*
 
 ### 💻 **Command Line Examples**
 
