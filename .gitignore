@@ -152,5 +152,6 @@ Desktop.ini
 # Docker
 .dockerignore
 
-# MongoDB data
-data/
+# MongoDB data (exclude source code directories)
+/data/
+mongodb_data/
