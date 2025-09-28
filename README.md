@@ -8,29 +8,77 @@ This RESTful API enables users to manage their music collection with automated m
 **⚠️ IMPORTANT: This project works best when run LOCALLY (not Docker)**
 
 **Recommended Local Setup (3 minutes):**
-1. `docker run -d --name local_mongo -p 27017:27017 mongo:7.0`
-2. `pip install fastapi uvicorn motor pymongo aiohttp python-dotenv`
-3. `uvicorn src.server:application --host 0.0.0.0 --port 8000 --reload`
-4. Run `python local_demo.py` for automated demonstration
-5. Access interactive docs at: http://localhost:8000/docs
 
-**✅ Verified Working Features:**
-- ✅ FastAPI with async support and auto-generated docs
-- ✅ MongoDB integration with text search indexing  
-- ✅ External API integrations (Genius, Spotify, LRCLib) - **WORKING**
-- ✅ CRUD operations with proper error handling
-- ✅ Metadata enrichment from multiple sources - **TESTED**
-- ✅ Clean architecture with separation of concerns
-- ✅ Real-time track addition with release dates and lyrics
+**Step 1: Start MongoDB**
+```bash
+docker run -d --name local_mongo -p 27017:27017 mongo:7.0
+```
+
+**Step 2: Install Dependencies**
+```bash
+pip install fastapi uvicorn motor pymongo aiohttp python-dotenv
+```
+
+**Step 3: Start API Server**
+```bash
+uvicorn src.server:application --host 0.0.0.0 --port 8000 --reload
+```
+
+**Step 4: Run Demo (Optional)**
+```bash
+python local_demo.py
+```
+
+**Step 5: Access API Documentation**
+```
+http://localhost:8000/docs
+```
+
+## **🧪 Quick Testing Examples**
+
+**Add a track:**
+```bash
+curl -X POST "http://localhost:8000/" \
+  -H "Content-Type: application/json" \
+  -d '{"title": "Bohemian Rhapsody", "artist": "Queen"}'
+```
+
+**PowerShell (Windows):**
+```powershell
+Invoke-RestMethod -Uri "http://localhost:8000/" -Method Post -ContentType "application/json" -Body '{"title": "Bohemian Rhapsody", "artist": "Queen"}'
+```
+
+**Search tracks:**
+```bash
+curl -X POST "http://localhost:8000/search" \
+  -H "Content-Type: application/json" \
+  -d '{"search_terms": ["Queen"]}'
+```
+
+**PowerShell (Windows):**
+```powershell
+Invoke-RestMethod -Uri "http://localhost:8000/search" -Method Post -ContentType "application/json" -Body '{"search_terms": ["Queen"]}'
+```
+
+**Expected Response:**
+```json
+{
+  "id": "68d7a5fdf0b2905748e5b199",
+  "title": "Thunderstruck",
+  "artist": "AC/DC",
+  "release_date": "1990-09-24",
+  "external_link": "https://genius.com/AC-DC-thunderstruck-lyrics"
+}
+```
 
 ## **✨ Key Features:**
 
-- High-performance FastAPI framework with asynchronous processing
-- MongoDB integration for scalable data storage (using motor/pymongo)
-- Multi-source metadata enrichment from popular music APIs
-- Containerized deployment with Docker
-- Auto-generated interactive API documentation
-- Advanced search capabilities with full-text indexing
+- 🚀 **FastAPI** with async support and auto-generated docs
+- 🗄️ **MongoDB** integration with text search indexing  
+- 🌐 **External APIs** - Genius, Spotify, LRCLib integration
+- 🔧 **CRUD Operations** with comprehensive error handling
+- 📊 **Metadata Enrichment** from multiple sources
+- 🏗️ **Clean Architecture** with separation of concerns
 
 ## **🔧 Prerequisites:**
 
